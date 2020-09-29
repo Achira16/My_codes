@@ -1,8 +1,25 @@
 #include<bits/stdc++.h>
 using namespace std;
+
+class a
+{
+    int ans;
+    public:
+    int calc()
+    {
+        return ++ans;
+    }
+    int aux()
+    {
+        ans = 0;
+        return this->calc();
+    }
+};
 int main()
 {
-    int *mat = (int*)malloc(2*2*sizeof(int));
-    cout<<mat<<" "<<mat+1<<" "<<mat+2<<" "<<mat+1*2+0;
-    free(mat);
+    a ob;
+    int a = ob.aux();
+    cout<<a;
+    a = ob.aux();
+    cout<<a;
 }
