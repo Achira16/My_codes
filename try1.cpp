@@ -1,25 +1,19 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-class a
+bool comparator(pair<int,int>& p,pair<int,int>& q)
 {
-    int ans;
-    public:
-    int calc()
-    {
-        return ++ans;
-    }
-    int aux()
-    {
-        ans = 0;
-        return this->calc();
-    }
-};
+    return p.first<q.first;
+}
 int main()
 {
-    a ob;
-    int a = ob.aux();
-    cout<<a;
-    a = ob.aux();
-    cout<<a;
+    vector<pair<int,int>> pairs;
+    pairs.push_back(make_pair(1,4));
+    pairs.push_back(make_pair(1,6));
+    pairs.push_back(make_pair(3,8));
+    sort(pairs.begin(),pairs.end(),comparator);
+    for(auto& it:pairs)
+    {
+        cout<<it.first<<it.second<<endl;
+    }
 }
