@@ -1,19 +1,33 @@
 #include<bits/stdc++.h>
 using namespace std;
-void heapify(vector<int>& p_q,int index)
+void heapify_up(vector<int>& p_q,int index)
 {
-    int max = index,i,n = p_q.size();
+    int p;
+    while(index>0)
+    {
+        p = (index-1)/2;
+        if(p_q[index]>p_q[p])
+            swap(p_q[index],p_q[p]);
+        else 
+            break;
+        index = p;
+    }
+}
+void heapify_down(vector<int>& p_q,int index)
+{
+    int max = index;
     do
     {
-        i = max;
-        int l = 2*i + 1;
-        int r = 2*i + 2;
-        if(l<n && p_q[l]>p_q[max])
+        index = max;
+        int l = 2*index+1;
+        int r = 2*index+2;
+        if(l<p_q.size() && p_q[l]>p_q[max])
             max = l;
-        if(r<n && p_q[r]>p_q[max])
+        if(r<p_q.size() && p_q[r]>p_q[max])
             max = r;
-        swap(p_q[i],p_q[max]);
-    } while (i!=max);
+        if(max!=index)
+            swap(p_q[index],p_q[max]);
+    } while (max!=index);
 }
 void print(vector<int>& p_q)
 {
@@ -32,7 +46,7 @@ void dequeue(vector<int>& p_q,int e)
         return;
     swap(p_q[ind],p_q[p_q.size()-1]);
     p_q.pop_back();
-    heapify(p_q,ind);
+    heapify_down(p_q,ind);
 }
 int dequeue(vector<int>& p_q)
 {
@@ -40,19 +54,13 @@ int dequeue(vector<int>& p_q)
     swap(p_q[0],p_q[n]);
     int item = p_q[n];
     p_q.pop_back();
-    heapify(p_q,0);
+    heapify_down(p_q,0);
     return item;
 }
 void enqueue(vector<int>& p_q,int d)
 {
     p_q.push_back(d);
-    if(p_q.size()>1)
-    {
-        for(int i=p_q.size()/2 - 1;i>=0;i--)
-        {
-            heapify(p_q,i);
-        }
-    }
+    heapify_up(p_q,p_q.size()-1);
 }
 int main()
 {

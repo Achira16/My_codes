@@ -78,13 +78,14 @@ void create_graph1(vector<vector<int>>& undir_graph)
 int main()
 {
    int n;
-   cin>>n;
-   vector<vector<int>> undir_graph(n);
-   vector<vector<int>> dir_graph(n);
+   //cin>>n;
+   
+  /* vector<vector<int>> dir_graph(n);
    create_graph(dir_graph);
    if(detect_cycle(dir_graph))
-        cout<<"Cycle detected";
+        cout<<"Cycle detected";*/
     cin>>n;
+    vector<vector<int>> undir_graph(n);
     create_graph1(undir_graph);
    if(detect_cycle1(undir_graph))
         cout<<"Cycle detected";
