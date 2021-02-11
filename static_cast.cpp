@@ -33,7 +33,7 @@ int main()
     //instead of this use static_cast
     string s2 = static_cast<string>(obj);
     obj = static_cast<Int>(20); 
-    /*If we cast char* to int* in C-style, it will compile successfully...however it is very dangerous as we char* points to 1 byte
+    /*If we cast char* to int* in C-style, it will compile successfully...however it is very dangerous as char* points to 1 byte
     memory location while int* points to 4byte memory location so if we assign any value through deferencing...a 4-byte value will
     be copied at that location which may give segmentation fault...hence static_cast doesnt allow this type of casting*/
     char c = 'a';
