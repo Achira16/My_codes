@@ -9,7 +9,7 @@ void heapify_up(vector<int>& p_q,int index)
         if(p_q[index]>p_q[p])
             swap(p_q[index],p_q[p]);
         else 
-            break;
+            break;  
         index = p;
     }
 }

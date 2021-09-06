@@ -11,7 +11,10 @@ struct s{
             return {a+x.a,b+x.b};
         }
     };
-
+struct node {
+    int val;
+    node* next;
+};
 int main()
 {
     
@@ -41,8 +44,9 @@ int main()
     //     count++;
     // }
     // cout<<count;
-    char *a = "hello";
-    char *b = "world";
-    a = b;
-    printf("%s %s",a,b);
+    // char *a = "hello";
+    // char *b = "world";
+    // a = b;
+    // printf("%s %s",a,b);
+    unordered_map<node*,int> mp;
 }

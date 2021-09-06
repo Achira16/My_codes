@@ -36,9 +36,10 @@ int trib(ll n){
         return 4;
     vector<vector<ll>> T = {{1,1,1},{1,0,0},{0,1,0}};
     power(T,n-2);
-    return (T[0][0]*4 + T[0][1]*2 + T[0][2])%1000000007;
+    return (T[0][0] + T[0][1]*2 + T[0][2])%1000000007;
 }
 int main(){
-    ll n = 1e18;
+    ll n;
+    cin>>n;
     cout<<trib(n);
 }

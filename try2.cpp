@@ -20,19 +20,22 @@ void rotate(vector<vector<int>>& mat,int n)
 }
 int main()
 {
-    int n;
-    cin>>n;
-    vector<vector<int>> mat(n,vector<int> (n));
-    for(int i=0;i<n;i++)
-    {
-        for(int j=0;j<n;j++)
-            cin>>mat[i][j];
-    }
-    rotate(mat,n);
-     for(int i=0;i<n;i++)
-    {
-        for(int j=0;j<n;j++)
-            cout<<mat[i][j]<<" ";
-        cout<<endl;
-    }
+    // int n;
+    // cin>>n;
+    // vector<vector<int>> mat(n,vector<int> (n));
+    // for(int i=0;i<n;i++)
+    // {
+    //     for(int j=0;j<n;j++)
+    //         cin>>mat[i][j];
+    // }
+    // rotate(mat,n);
+    //  for(int i=0;i<n;i++)
+    // {
+    //     for(int j=0;j<n;j++)
+    //         cout<<mat[i][j]<<" ";
+    //     cout<<endl;
+    // }
+    string a = "abc",b=a;
+    reverse(b.begin(),b.end());
+    cout<<b;
 }

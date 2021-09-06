@@ -18,6 +18,10 @@ void KMPmatch(string& pat,string& s)
         if(pat[k] == pat[i]) k++;
         pi[i] = k;
     }
+    for(auto i:pi)
+    {
+        cout<<i<<" ";
+    }
     //main algorithm
     k = 0;
     for(int i=0;i<=n;i++)
