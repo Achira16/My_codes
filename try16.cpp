@@ -14,7 +14,9 @@ int main()
     // unordered_set<node*> s1 = s;
     // s.erase(temp);
     // cout<<s.size()<<s1.size();
-    string s = "jcdhs";
+    // string s = "jcdhs";
     // printf("The string is: (%s)",s);
-    cout<<"The string is: "<<s;
+    // cout<<"The string is: "<<s;
+    bool ans = (' ' < 'r');
+    cout<<ans;
 }
