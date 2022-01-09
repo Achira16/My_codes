@@ -14,15 +14,7 @@ void update(vector<int>& st,int si,int sl,int sr,int ind,int diff)
         update(st,2*si+2,mid+1,sr,ind,diff);
     }
 }
-int range_sum(vector<int>& st,int si,int sl,int sr,int l,int r)
-{
-    if(sl>=l && sr<=r)
-        return st[si];
-    if(sr<l || sl>r)
-        return 0;
-    int mid = (sl+sr)/2;
-    return range_sum(st,2*si+1,sl,mid,l,r)+range_sum(st,2*si+2,mid+1,sr,l,r);
-}
+
 int findsum(vector<int>& st,int ind,int sl,int sr,int l,int r)
 {
     if(sl>=l && sr<=r)
@@ -32,17 +24,7 @@ int findsum(vector<int>& st,int ind,int sl,int sr,int l,int r)
     int mid = (sl+sr)/2;
     return findsum(st,2*ind+1,sl,mid,l,r)+findsum(st,2*ind+2,mid+1,sr,l,r);
 }
-int construct_st_util(vector<int>& st,int si,int l,int r,vector<int>& arr)
-{
-    if(l == r)
-    {
-        st[si] = arr[l];
-        return st[si];
-    }
-    int mid = (l+r)/2;
-    st[si] = construct_st_util(st,2*si+1,l,mid,arr) + construct_st_util(st,2*si+2,mid+1,r,arr);
-    return st[si];
-}
+
 int construct(vector<int>& st,int ind,int l,int r,vector<int>& nums)
 {
     if(l == r)

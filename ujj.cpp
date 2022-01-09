@@ -1,92 +1,31 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-
-string operator*(int a,string& s){
-    string ans = "";
-    for(int i=0;i<a;i++)
-    {
-        ans = ans+s;
-    }
-    return ans;
-}
-int romanToInt(string s) {
-    unordered_map<char,int> mp;
-    mp['I'] = 1;
-    mp['V'] = 5;
-    mp['X'] = 10;
-    mp['L'] = 50;
-    mp['C'] = 100;
-    mp['D'] = 500;
-    mp['M'] = 1000;
-    char prev = 'N';
-    int n = s.size();
-    int sum = mp[s[n-1]];
-    for(int i=n-2;i>=0;i--)
-    {
-        if(s[i] == 'I')
-        {
-            if(s[i+1] == 'V'||s[i+1] == 'X')
-                sum-=mp[s[i]];
-            else
-                sum+=mp[s[i]];
-        }
-        else if(s[i] == 'X')
-        {
-            if(s[i+1] == 'L'||s[i+1]=='C')
-                sum-=mp[s[i]];
-            else
-                sum+=mp[s[i]];
-        }
-        else if(s[i] == 'C')
-        {
-            if(s[i+1] == 'D'||s[i+1]=='M')
-                sum-=mp[s[i]];
-            else
-                sum+=mp[s[i]];
-        }
-        else
-        {
-            sum+=mp[s[i]];
-        }
-    }
-    return sum;
-}
-string intToRoman(int num) {
-    unordered_map<int,string> mp;
-    mp[1] = "I",mp[5] = "V",mp[10] = "X",mp[50] = "L",mp[100] = "C",mp[500] = "D",mp[1000] = "M";
-    string ans = "";
-    int power = 1;
-    while(num)
-    {
-        int d = num%10;
-        if(d<5)
-        {
-            if(d == 4)
-                ans = mp[1*power]+mp[5*power]+ans;
-            else
-                ans = d*mp[1*power]+ans;
-        }
-        else
-        {
-            if(d == 5)
-                ans = mp[5*power] + ans;
-            else if(d-5 == 4)
-                ans = mp[1*power] + mp[10*power] + ans;
-            else
-                ans = mp[5*power] + (d-5)*mp[1*power] + ans;
-        }
-        num/=10;
-        power*=10;
-    }
-    return ans;
+#define ll long long
+#define vec vector<unordered_map<int,unordered_map<int,ll>>>
+// Write any include statements here
+ll func(int i,int l1,int l2,vector<int>& C,int M,int N,vec& dp){
+  if(i >= M) return 0;
+  if(dp[i].find(l1) != dp[i].end()){
+    if(dp[i][l1].find(l2) != dp[i][l1].end()) return dp[i][l1][l2];
+  }
+  ll a1 = min(abs(l1-C[i]),N - abs(l1-C[i]));
+  ll a2 = min(abs(l2-C[i]),N - abs(l2-C[i]));
+  return dp[i][l1][l2] = min(a1+func(i+1,C[i],l2,C,M,N,dp),a2+func(i+1,l1,C[i],C,M,N,dp));
 }
 
-string StringChallenge(string& str){
-    int num = romanToInt(str);
-    return intToRoman(num);
+long long getMinCodeEntryTime(int N, int M, vector<int> C) {
+  // Write your code here
+  vec dp(M);
+  return func(0,1,1,C,M,N,dp);
 }
+
 int main(){
-    string s;
-    cin>>s;
-    cout<<StringChallenge(s);
+  // int N,M;
+  // cin>>N>>M;
+  // vector<int> C(M);
+  // for(int i=0;i<M;i++) cin>>C[i];
+  // cout<<getMinCodeEntryTime(N,M,C);
+  double a1 = 1e9,b1 = 1e9,a2 = 999999999,b2 = 1e9;
+  double res1 = a1*log(a1)*b1,res2 = a2*log(a2)*b2;
+  if(res1 == res2) cout<<"1";
 }
